@@ -1,2 +1,2 @@
-# Avvy-Savvy-Skiing
+# Avy-Savvy-Skiing
 Winter Study Project Repository
