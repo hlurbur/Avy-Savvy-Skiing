@@ -9,5 +9,8 @@ URL = "https://nwac.us/avalanche-forecast/#/all/"
 #the response
 r = requests.get(URL)
 
+#parse the HTML
 soup = BeautifulSoup(r.content,'html5lib')
-print(soup.pretify())
+
+#print the pretty version of the data
+print(soup.prettify())
