@@ -3,14 +3,14 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 
-webdriver_path = ('/Users/hadassahlurbur/Desktop/Avvy-Savvy-Skiing/chromedriver')
+webdriver_path = ('/Users/mlurbur/Documents/chromedriver')
 
 driver = webdriver.Chrome(webdriver_path)
 
 # the response
 r = driver.get('https://nwac.us/avalanche-forecast/#/olympics')
 
-soup = BeautifulSoup(driver.page_source, 'html5lib')
+soup = BeautifulSoup(driver.page_source, 'html.parser')
 
 
 #dangers = driver.find_elements_by_xpath('//td[@class="name"]')
@@ -26,4 +26,8 @@ soup = BeautifulSoup(driver.page_source, 'html5lib')
 # #soup = BeautifulSoup(r.text, 'html.parser')
 
 # #print the pretty version of the data
-print(soup.prettify())
+
+# found one
+danger_text = soup.find(class_  = 'nac-contentPanel').find(class_ = 'nac-danger').find(class_ = 'nac-dangerLabel').text
+print(danger_text)
+# print(soup.prettify())
