@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 
-webdriver_path = ('/Users/mlurbur/Documents/chromedriver')
+webdriver_path = ('/Users/hadassahlurbur/Desktop/Avvy-Savvy-Skiing/chromedriver')
 
 driver = webdriver.Chrome(webdriver_path)
 
@@ -28,6 +28,8 @@ soup = BeautifulSoup(driver.page_source, 'html.parser')
 # #print the pretty version of the data
 
 # found one
-danger_text = soup.find(class_  = 'nac-contentPanel').find(class_ = 'nac-danger').find(class_ = 'nac-dangerLabel').text
-print(danger_text)
-# print(soup.prettify())
+print(soup.find(class_  = 'nac-contentPanel').find(class_ = 'nac-danger').find(class_ = 'nac-dangerLabel'))
+print(soup.findAll(class_ = 'nac-dangerLabel'))
+#print(soup.find(class_  = 'nac-contentPanel').find_all(class_ = 'nac-danger').find_all(class_ = 'nac-dangerLabel'))
+#print(danger_text)
+#print(soup)
