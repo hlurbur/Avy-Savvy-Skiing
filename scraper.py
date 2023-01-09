@@ -19,6 +19,17 @@ soup = BeautifulSoup(driver.page_source, 'html.parser')
 #Scrapes the avalanche forecast from a NWAC URL for a particular region's URL forecast page
 #Returns a list of the dangers at each elevation level.
 def scrapeForecast(url):
+    """
+    Scrapes data from the NWAC page of a given forecasted region in the North Cascades
+
+    Args:
+    url: url string to scrape
+
+    Returns:
+    dangersList: a list of the dagers from the forecasted elevation bands: AboveTreeline, nearTreeline, and belowTreeline
+    in that order. 
+
+    """
     
     r = driver.get(url)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -33,7 +44,11 @@ def scrapeForecast(url):
     return dangersList
 
 def scrapeOlympics():
+    """
+    Scrapes and returns the avalanche forecast for the olympics region
+    """
     olympics = "https://nwac.us/avalanche-forecast/#/olympics"
+    return scrapeForecast(olympics)
     
 def scrapeWestSlopesNorth():
     westSlopesNorth = "https://nwac.us/avalanche-forecast/#/west-slopes-north"
