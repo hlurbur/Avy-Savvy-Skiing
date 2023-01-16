@@ -1,4 +1,5 @@
 import pandas as pd
+import skiRoute
 
 
 #url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSk4DAFdMfMObApX_jl4mseQM950yuxAuCxL2lJLe17Udi16JZOZ1KR1yq3UpagOkRGW7nHoESb6nTM/pubhtml"
@@ -12,6 +13,8 @@ url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?gid=0&format=cs
 df = pd.read_csv(url,index_col=0)
 print(df.head())
 print(len(df))
+
+myRoutes = []
 
 for routeName, row in df.iterrows():
     print(routeName, row["Region"])
