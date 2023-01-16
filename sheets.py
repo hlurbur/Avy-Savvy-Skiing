@@ -11,3 +11,5 @@ sheet_id = "1M4zSa9Osun8BaQos3dhi97FRa74uo5EJjaIh3NV7-3U"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?gid=0&format=csv"
 df = pd.read_csv(url,index_col=0)
 print(df.head())
+print(len(df))
+
