@@ -13,3 +13,6 @@ df = pd.read_csv(url,index_col=0)
 print(df.head())
 print(len(df))
 
+for routeName, row in df.iterrows():
+    print(routeName, row["Region"])
+
