@@ -1,5 +1,5 @@
 import pandas as pd
-import skiRoute
+from skiRoute import skiRoute
 
 
 #url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSk4DAFdMfMObApX_jl4mseQM950yuxAuCxL2lJLe17Udi16JZOZ1KR1yq3UpagOkRGW7nHoESb6nTM/pubhtml"
@@ -17,5 +17,8 @@ print(len(df))
 myRoutes = []
 
 for routeName, row in df.iterrows():
-    print(routeName, row["Region"])
-
+    #print(routeName, row["Region"])
+    thisRoute = skiRoute(routeName, row["Region"], row["Below Treeline"], row["Near Treeline"], row["Above Treeline"], row["Avalanche Terrain?"], row["Avy terrain avoidable?"], row["Fun out of 10"], row["Risk"])
+    print(thisRoute)
+    myRoutes.append(thisRoute)
+#print(myRoutes) 

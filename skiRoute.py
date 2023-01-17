@@ -9,7 +9,7 @@ class skiRoute:
         Create a new skiRoute object. 
         """
         self._name = name
-        self.region = region
+        self._region = region
         self._belowTreeline = belowTreeline
         self._nearTreeline = nearTreeline
         self._aboveTreeline = aboveTreeline
@@ -22,7 +22,7 @@ class skiRoute:
         """
         return the string representation of a Ski Route
         """
-        routeStr = "Name:" + self._name + ", Region:" + self._region + ", BelowTL:" + self._belowTreeline + ", Near TL:" + self._nearTreeline + ", AboveTL:" + self._aboveTreeline + ", AvyTrr:" + self._avyTerrain + ", Avoidable:" +  self._avyAvoidable + ", Fun/10:" + self._funOften + ", Risk/10:" + self._riskOften
+        routeStr = "Name:" + self._name + ", Region:" + self._region + ", BelowTL:" + self._belowTreeline + ", Near TL:" + self._nearTreeline + ", AboveTL:" + self._aboveTreeline + ", AvyTrr:" + self._avyTerrain + ", Avoidable:" +  self._avyAvoidable + ", Fun/10:" + str(self._funOften) + ", Risk/10:" + str(self._riskOften)
         return routeStr
 
     def get_name(self):
