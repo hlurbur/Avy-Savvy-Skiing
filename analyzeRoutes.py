@@ -26,8 +26,56 @@ def get_regionForecast(regionString):
     else:
         return "No valid Region Name found"
     
-def makeForecastNumerical():
-    pass
+def makeForecastNumerical(forecastList):
+    
+    numericalForecast = []
+    for forecast in forecastList:
+        numericalForecast += int(forecast[1:2]) #this should grab just the integer and turn it into an int
+    return numericalForecast
+
+def getBelowTL_routes(allRoutes):
+    """
+    takes a list of all routes in the spreadsheet and returns a list of the routes which cross through the below treeline elevation band
+    """
+    belowTLroutes = []
+    for route in allRoutes:
+        if get_belowTreeline(route) == True:
+            belowTLroutes.append(route)
+    return belowTLroutes
+
+def getNearTL_routes(allRoutes):
+    """
+    takes a list of all routes and returns a list of the routes which cross through the near treeline elevation band
+    """
+    nearTLroutes = []
+    for route in allRoutes:
+        if get_nearTreeline(route) == True:
+            nearTLroutes.append(route)
+    return nearTLroutes
+
+def getAboveTLroutes(allRoutes):
+    """
+    takes a list of all routes and returns a list of the routes which cross through the above treeline elevation band
+    """
+    aboveTLroutes = []
+    for route in allRoutes:
+        if get_aboveTreeline(route) == True:
+            aboveTLroutes.append(route)
+    return aboveTLroutes
+#In the format [above treeline, near treeline, below treeline]
+numericalForecast = [3,2,2]
+
+goodRoutes = []
+
+belowLT = getBelowTL_routes
+nearTL = getNearTL_routes
+aboveTL = getAboveTLroutes
+#
+if numericalForecast[0] < 3:
+    goodRoutes.extend(aboveTL)
+
+
+
 
 skiRoutes = readInRoutes()
 progUsers = readInUsers()
