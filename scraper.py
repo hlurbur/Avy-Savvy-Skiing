@@ -10,11 +10,11 @@ webdriver_path = ('/Users/hadassahlurbur/Desktop/Avvy-Savvy-Skiing/chromedriver'
 # make the driver
 driver = webdriver.Chrome(webdriver_path)
 
-# get the response
-r = driver.get('https://nwac.us/avalanche-forecast/#/olympics')
+# # get the response
+# r = driver.get('https://nwac.us/avalanche-forecast/#/olympics')
 
-# make the soup
-soup = BeautifulSoup(driver.page_source, 'html.parser')
+# # make the soup
+# soup = BeautifulSoup(driver.page_source, 'html.parser')
 
 #Scrapes the avalanche forecast from a NWAC URL for a particular region's URL forecast page
 #Returns a list of the dangers at each elevation level.
@@ -86,6 +86,7 @@ def scrapeMtHood():
     mountHood = "https://nwac.us/avalanche-forecast/#/mt-hood"
     return scrapeForecast(mountHood)
 
+scrapeMtHood()
 # # # scrapes information from NWAC all forecasts page
 # # #The URL to scrape
 # # URL = "https://nwac.us/avalanche-forecast/#/olympics"
