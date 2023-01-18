@@ -26,6 +26,8 @@ def get_regionForecast(regionString):
     else:
         return "No valid Region Name found"
     
+def makeForecastNumerical():
+    pass
 
 skiRoutes = readInRoutes()
 progUsers = readInUsers()
