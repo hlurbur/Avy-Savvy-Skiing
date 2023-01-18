@@ -22,7 +22,7 @@ class skiRoute:
         """
         return the string representation of a Ski Route
         """
-        routeStr = "Name:" + self._name + ", Region:" + self._region + ", BelowTL:" + self._belowTreeline + ", Near TL:" + self._nearTreeline + ", AboveTL:" + self._aboveTreeline + ", AvyTrr:" + self._avyTerrain + ", Avoidable:" +  self._avyAvoidable + ", Fun/10:" + str(self._funOften) + ", Risk/10:" + str(self._riskOften)
+        routeStr = "Name:" + self._name + ", Region:" + self._region + ", BelowTL:" + str(self._belowTreeline) + ", Near TL:" + str(self._nearTreeline) + ", AboveTL:" + str(self._aboveTreeline) + ", AvyTrr:" + str(self._avyTerrain) + ", Avoidable:" +  str(self._avyAvoidable) + ", Fun/10:" + str(self._funOften) + ", Risk/10:" + str(self._riskOften)
         return routeStr
 
     def get_name(self):
@@ -41,36 +41,42 @@ class skiRoute:
         """
         return T or F is the route crosses enters bwlow treeline elevation
         """
-        return self._belowTreeline
+        #return the boolean of the true false string
+        return eval(self._belowTreeline)
 
     def get_nearTreeline(self):
         """
         return T or F if the route croses near treeline elevation
         """
-        return self._nearTreeline
+        #return the boolean of the true false string
+        return eval(self._nearTreeline)
     
     def get_aboveTreeline(self):
         """
         return T of F if the route crosses above treeline elevation
         """
-        return self._aboveTreeline
+        #return the boolean of the string
+        return eval(self._aboveTreeline)
     
     def get_avyTerrain(self):
         """
         return T of F if the route enters avalanche terrain
         """
-        return self._avyTerrain
+        #return the boolean of the true false string
+        return eval(self._avyTerrain)
 
     def get_avyAvoidable(self):
         """
         return T or F if it is possible to complete the route while avoiding avalanche terrain
         """
-        return self._avyAvoidable
+        #return the boolean of the true false string
+        return eval(self._avyAvoidable)
     
     def get_funOften(self):
         """
         Return the route's fun score ranked out of 10
         """
+        #return the integer of the string value
         return self._funOften
 
     def get_riskOften(self):
