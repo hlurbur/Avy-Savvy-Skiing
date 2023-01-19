@@ -79,7 +79,7 @@ class skiRoute:
         #return the integer of the string value
         return self._funOften
 
-    def get_riskOften(self):
+    def get_risk(self):
         """
         return the route's general risk score out of 10
         """

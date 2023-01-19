@@ -65,7 +65,7 @@ def getAboveTLroutes(allRoutes):
 #In the format [above treeline, near treeline, below treeline]
 numericalForecast = [3,2,2]
 
-goodRoutes = []
+
 
 belowLT = getBelowTL_routes
 nearTL = getNearTL_routes
@@ -75,9 +75,48 @@ if numericalForecast[0] < 3:
     goodRoutes.extend(aboveTL)
 
 
+goodRoutes = readInRoutes()
+below = numericalForecast[0]
+near = numericalForecast[1]
+above = numericalForecast[2]
 
+if below >= 3:
+    for route in goodRoutes:
+        if get_belowTreeline(route) == True and get_avyTerrain(route) == True:
+            goodRoutes.remove(route)
+if near >= 3:
+    for route in goodRoutes:
+        if get_nearTreeline(route) == True and get_avyTerrain(route) == True:
+            goodRoutes.remove(route)
+if above >= 3:
+    for route in goodRoutes:
+        if get_aboveTreeline(route) == True and get_avyTerrain(route) == true:
+            goodRoutes.remove(route)
 
-skiRoutes = readInRoutes()
+#If the forecast is moderate, remove routes which have high risk, or in which entering avy terrian is unavoidable
+if below == 2:
+    for route in goodRoutes:
+        if get_belowTreeline(route) == True and get_avyTerrain(route) and get_avyAvoidable(route) == False and get_risk(route) >= 6:
+            goodRoutes.remove(route)
+
+if near == 2:
+    for route in goodRoutes:
+        if get_nearTreeline(route) == True and get_avyTerrain(route) and get_avyAvoidable(route) == False and get_risk(route) >= 6:
+            goodRoutes.remove(route)
+if above == 2:
+    for route in goodRoutes:
+        if get_aboveTreeline(route) == True and get_avyTerrain(route) and get_avyAvoidable(route) == False and get_risk(route) >= 6:
+            goodRoutes.remove(route)
+            
+            
+##Get the three most fun of the remaining routes
+if len(goodRoutes) <= 3:
+    print(goodRoutes)
+
+else:
+    topFun = 
+
+       
 progUsers = readInUsers()
 
 hadassah = progUsers[0]
