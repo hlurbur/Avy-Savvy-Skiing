@@ -67,13 +67,10 @@ numericalForecast = [3,2,2]
 
 
 
-belowLT = getBelowTL_routes
-nearTL = getNearTL_routes
-aboveTL = getAboveTLroutes
+# belowLT = getBelowTL_routes
+# nearTL = getNearTL_routes
+# aboveTL = getAboveTLroutes
 #
-if numericalForecast[0] < 3:
-    goodRoutes.extend(aboveTL)
-
 
 goodRoutes = readInRoutes()
 below = numericalForecast[0]
@@ -114,11 +111,12 @@ if len(goodRoutes) <= 3:
     print(goodRoutes)
 
 else:
-    topFun = yes
+    #
+    funSorted = goodRoutes.sort(key=lambda x: x._funOften, reverse = True)
+    print(funSorted[0], funSorted[1], funSorted[2])
 
-       
-progUsers = readInUsers()
+# progUsers = readInUsers()
 
-hadassah = progUsers[0]
-print(hadassah)
+# hadassah = progUsers[0]
+# print(hadassah)
 
