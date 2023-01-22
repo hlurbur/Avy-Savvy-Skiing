@@ -114,7 +114,7 @@ if len(goodRoutes) <= 3:
     print(goodRoutes)
 
 else:
-    topFun = 
+    topFun = yes
 
        
 progUsers = readInUsers()
