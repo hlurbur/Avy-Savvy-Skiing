@@ -36,4 +36,4 @@ class user:
         """
         return the string of the email of the user
         """
-        return self._email
+        return self._email 
