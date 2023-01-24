@@ -49,28 +49,28 @@ class skiRoute:
         return T or F if the route croses near treeline elevation
         """
         #return the boolean of the true false string
-        return eval(self._nearTreeline)
+        return self._nearTreeline
     
     def get_aboveTreeline(self):
         """
         return T of F if the route crosses above treeline elevation
         """
         #return the boolean of the string
-        return eval(self._aboveTreeline)
+        return self._aboveTreeline
     
     def get_avyTerrain(self):
         """
         return T of F if the route enters avalanche terrain
         """
         #return the boolean of the true false string
-        return eval(self._avyTerrain)
+        return self._avyTerrain
 
     def get_avyAvoidable(self):
         """
         return T or F if it is possible to complete the route while avoiding avalanche terrain
         """
         #return the boolean of the true false string
-        return eval(self._avyAvoidable)
+        return self._avyAvoidable
     
     def get_funOften(self):
         """

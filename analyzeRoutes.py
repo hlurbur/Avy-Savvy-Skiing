@@ -64,7 +64,7 @@ if above >= 3:
 #If the forecast is moderate, remove routes which have high risk, or in which entering avy terrian is unavoidable
 if below == 2:
     for route in goodRoutes:
-        if route._belowTreeline()== True and route.get_avyTerrain() and route.get_avyAvoidable() == False and route.get_risk() >= 6:
+        if route.get_belowTreeline()== True and route.get_avyTerrain() and route.get_avyAvoidable() == False and route.get_risk() >= 6:
             goodRoutes.remove(route)
 
 if near == 2:
@@ -85,9 +85,9 @@ if len(goodRoutes) <= 3:
     print(goodRoutes)
 
 else:
-    #
-    funSorted = goodRoutes.sort(key=lambda x: x._funOften, reverse = True)
-    print(funSorted[0], funSorted[1], funSorted[2])
+    print(goodRoutes)
+    goodRoutes.sort(key=lambda x: x._funOften, reverse = True)
+    print(goodRoutes[0], goodRoutes[1], goodRoutes[2])
 
 
 
