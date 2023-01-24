@@ -2,6 +2,7 @@ from scraper import *
 from sheets import *
 from skiRoute import *
 
+
 def get_regionForecast(regionString):
     if regionString.lower() == "olympics" :
         return scrapeOlympics
@@ -86,7 +87,7 @@ if len(goodRoutes) <= 3:
 
 else:
     print(goodRoutes)
-    goodRoutes.sort(key=lambda x: x._funOften, reverse = True)
+    goodRoutes.sort(key=lambda x: x.get_funOften(), reverse = True)
     print(goodRoutes[0], goodRoutes[1], goodRoutes[2])
 
 

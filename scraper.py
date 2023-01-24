@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from time import sleep
 
 
 
@@ -10,11 +11,7 @@ webdriver_path = ('/Users/hadassahlurbur/Desktop/Avvy-Savvy-Skiing/chromedriver'
 # make the driver
 driver = webdriver.Chrome(webdriver_path)
 
-# # get the response
-# r = driver.get('https://nwac.us/avalanche-forecast/#/olympics')
 
-# # make the soup
-# soup = BeautifulSoup(driver.page_source, 'html.parser')
 
 #Scrapes the avalanche forecast from a NWAC URL for a particular region's URL forecast page
 #Returns a list of the dangers at each elevation level.
@@ -32,7 +29,9 @@ def scrapeForecast(url):
     """
     
     r = driver.get(url)
+    sleep(1)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
+    sleep(1)
     dangers = soup.find(class_  = 'nac-contentPanel').findAll(class_ = 'nac-dangerLabel') #this is a list of HTML objects
     
     aboveTreeline = dangers[0].text
