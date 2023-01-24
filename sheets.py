@@ -12,8 +12,8 @@ def readInRoutes():
     #sheet_name = 'Routes'
     routeURL = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?gid=0&format=csv&sheet=Routes"
     routeDF = pd.read_csv(routeURL,index_col=0)
-    print(routeDF.head())
-    print(len(routeDF))
+    # print(routeDF.head())
+    # print(len(routeDF))
 
     myRoutes = []
     
@@ -21,7 +21,7 @@ def readInRoutes():
     for routeName, row in routeDF.iterrows():
         #print(routeName, row["Region"])
         thisRoute = skiRoute(routeName, row["Region"], row["Below Treeline"], row["Near Treeline"], row["Above Treeline"], row["Avalanche Terrain?"], row["Avy terrain avoidable?"], row["Fun out of 10"], row["Risk"])
-        print(thisRoute)
+        # print(thisRoute)
         myRoutes.append(thisRoute)
     return myRoutes
 
