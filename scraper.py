@@ -40,7 +40,7 @@ def scrapeForecast(url):
     belowTreeline = dangers[2].text
     
     dangersList = [aboveTreeline, nearTreeline, belowTreeline]
-
+    print(dangersList)
     return dangersList
 
 def scrapeOlympics():

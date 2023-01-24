@@ -42,7 +42,7 @@ class skiRoute:
         return T or F is the route crosses enters bwlow treeline elevation
         """
         #return the boolean of the true false string
-        return eval(self._belowTreeline)
+        return self._belowTreeline
 
     def get_nearTreeline(self):
         """

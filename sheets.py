@@ -6,6 +6,9 @@ sheet_id = "1M4zSa9Osun8BaQos3dhi97FRa74uo5EJjaIh3NV7-3U"
 
 
 def readInRoutes(): 
+    """
+    Reads in routes from the google sheet. Returns a list of route objects, myRoutes.
+    """
     #sheet_name = 'Routes'
     routeURL = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?gid=0&format=csv&sheet=Routes"
     routeDF = pd.read_csv(routeURL,index_col=0)
