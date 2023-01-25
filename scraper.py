@@ -1,8 +1,14 @@
+""" The web scraper utilizes the BeautifulSoup library to scrape the avalanche forecast
+from the Northwest Avalanche Center website for a given region in the Cascades. 
+The Avalache forecast is made up of three forecasted danger levels: below treeline, near treeline and above treeline.
+Each danger level ranges from low (1) to extreme (5). The scraper returns a list of three forecasts, one
+for each treeline level for a specified region.
+"""
+
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from time import sleep
-
 
 
 # path in the computer for the web driver
@@ -13,39 +19,42 @@ driver = webdriver.Chrome(webdriver_path)
 
 
 
-#Scrapes the avalanche forecast from a NWAC URL for a particular region's URL forecast page
-#Returns a list of the dangers at each elevation level.
 def scrapeForecast(url):
     """
     Scrapes data from the NWAC page of a given forecasted region in the North Cascades
 
     Args:
-    url: url string to scrape
+    url: url string of an NWAC page for a specific region of the cascades to scrape 
 
     Returns:
-    dangersList: a list of the dagers from the forecasted elevation bands: AboveTreeline, nearTreeline, and belowTreeline
+    dangersList: a list of the dager levels from the forecasted elevation bands: aboveTreeline, nearTreeline, and belowTreeline
     in that order. 
 
     """
     
+    #Load the url, use sleep to ensure that page and scraped contet loads completely
+    #before getting content from the soup.
     r = driver.get(url)
     sleep(1)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     sleep(1)
+    #Use class names from page inspection to extract desired information
     dangers = soup.find(class_  = 'nac-contentPanel').findAll(class_ = 'nac-dangerLabel') #this is a list of HTML objects
     
+    #Get the desired text from the HTML objects
     aboveTreeline = dangers[0].text
     nearTreeline = dangers[1].text
     belowTreeline = dangers[2].text
     
     dangersList = [aboveTreeline, nearTreeline, belowTreeline]
-    print(dangersList)
+    
+    #return a list of the three forecasted danger levels ranging from low to extreme
     return dangersList
 
+"""
+Each Scraper method returns the avalanche forecast for the region name spedified in the definition.
+"""
 def scrapeOlympics():
-    """
-    Scrapes and returns the avalanche forecast for the olympics region
-    """
     olympics = "https://nwac.us/avalanche-forecast/#/olympics"
     return scrapeForecast(olympics)
     
@@ -86,34 +95,6 @@ def scrapeMtHood():
     return scrapeForecast(mountHood)
 
 
-# # # scrapes information from NWAC all forecasts page
-# # #The URL to scrape
-# # URL = "https://nwac.us/avalanche-forecast/#/olympics"
 
-# # #the response
-# # r = requests.get(URL)
-
-# # #parse the HTML
-# # soup = BeautifulSoup(r.content,'html5lib')
-# # #soup = BeautifulSoup(r.text, 'html.parser')
-
-# # #print the pretty version of the data
-
-# # found one
-# # print(soup.find(class_  = 'nac-contentPanel').find(class_ = 'nac-danger').find(class_ = 'nac-dangerLabel'))
-# # print(soup.findAll(class_ = 'nac-dangerLabel'))
-
-# dangers = soup.find(class_  = 'nac-contentPanel').findAll(class_ = 'nac-dangerLabel') #this is a list of HTML objects
-# Above = dangers[0].text
-# Near = dangers[1].text
-# Below = dangers[2].text
-# print("poop")
-
-# # make a list of the URls, make a function that returns infor the URL
-
-
-# #print(soup.find(class_  = 'nac-contentPanel').find_all(class_ = 'nac-danger').find_all(class_ = 'nac-dangerLabel'))
-# #print(danger_text)
-# #print(soup)
 
 
