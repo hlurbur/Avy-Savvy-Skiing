@@ -5,12 +5,18 @@ from analyzeRoutes import *
 
 sender_email = "AvyScraper@gmail.com"
 gmail_password = "vusezjvbwbnkpold"
-recipient = "h.lurbur@gmail.com"
-name = "Hadassah"
-routeSuggestion = "shangrila and powder cash!"
 
 
-def sendEmail(recipient, name, routeSuggestion,):
+def sendEmail(recipient, name, routeSuggestion):
+    """
+    Sends an email to a user with the suggested routes for them to ski
+    
+    Args:
+    recipient: the email address of the user that will recieve the email
+    name: the strint name of the user
+    routeSuggestion: the string route suggestion for the user to ski
+    
+    """
 
 
     message = MIMEMultipart()
@@ -34,4 +40,3 @@ def sendEmail(recipient, name, routeSuggestion,):
     s.sendmail(sender_email, recipient, text)
     s.quit()
 
-sendEmail(recipient, name, routeSuggestion)

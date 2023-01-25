@@ -4,26 +4,29 @@ from skiRoute import *
 
 
 def get_regionForecast(regionString):
+    """
+    Takes in the string name of a region and reutns the avalanche forecast from the region"""
     if regionString.lower() == "olympics" :
-        return scrapeOlympics
+        return scrapeOlympics()
     elif regionString.lower() == "west slopes north":
-        return scrapeWestSlopesNorth
+        return scrapeWestSlopesNorth()
     elif regionString.lower() == "west slopes central":
-        return scrapeWestSlopesCentral
+        return scrapeWestSlopesCentral()
     elif regionString.lower() == "west slopes south":
-        return scrapeWestSlopesSouth
+        return scrapeWestSlopesSouth()
     elif regionString.lower() == "stevens pass":
-        return scrapeStevensPass
+        return scrapeStevensPass()
     elif regionString.lower() == "snoqualmie pass":
-        return scrapeSnoqualmiePass
+        return scrapeSnoqualmiePass()
     elif regionString == "east slopes central":
         return scrapeEastSlopesCentral
     elif regionString.lower() == "east slopes south":
-        return scrapeEastSlopesSouth
+        return scrapeEastSlopesSouth()
     elif regionString.lower() == "east slopes north":
-        return scrapeEastSlopesNorth
+        forecastList =  scrapeEastSlopesNorth()
+        return forecastList
     elif regionString == ("mount hood" or "mt hood" or "mt. hood"):
-        return scrapeMtHood
+        return scrapeMtHood()
     else:
         print("No valid Region Name found")
     
@@ -38,13 +41,24 @@ def makeForecastNumerical(avyForecast):
     print(numericalForecast)
     return numericalForecast
 
+def getRegionRoutes(region):
+    """
+    takes in the string name of a region and returns a list of routes which are in the specified region
+    """
+    goodRoutes = []
+    allRoutes = readInRoutes()
+    for route in allRoutes:
+        if route.get_region().lower() == region:
+            goodRoutes.append(route)
+
+    return goodRoutes
 
 #In the format [above treeline, near treeline, below treeline]
 numerical = makeForecastNumerical([' 2 - Moderate ', ' 2 - Moderate ', ' 2 - Moderate '])
 print(numerical)
 
 
-def chooseRoutes(avyForecast):
+def chooseRoutes(avyForecast, region):
     """
     Takes in an avalanche forecaset and returns a string of the safe routes to ski,
     otherwise returns a string saying there are no dafe routes to ski
@@ -57,8 +71,8 @@ def chooseRoutes(avyForecast):
     near = numericalForecast[1]
     above = numericalForecast[2]
     
-    #get a list of all possible routes to ski
-    goodRoutes = readInRoutes()
+    #get a list of all possible routes to ski in the specified region
+    goodRoutes = getRegionRoutes(region)
    
 
     #If the forecast at an elevation band is considerale or above, remove all routues which both pass through
@@ -118,4 +132,4 @@ def chooseRoutes(avyForecast):
         return routeSuggestion
 
 
-chooseRoutes([' 2 - Moderate ', ' 2 - Moderate ', ' 2 - Moderate '])
+
