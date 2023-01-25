@@ -40,13 +40,14 @@ def makeForecastNumerical(avyForecast):
 
 
 #In the format [above treeline, near treeline, below treeline]
-numerical = makeForecastNumerical([' 3 - Moderate ', ' 2 - Moderate ', ' 2 - Moderate '])
+numerical = makeForecastNumerical([' 2 - Moderate ', ' 2 - Moderate ', ' 2 - Moderate '])
 print(numerical)
 
 
 def chooseRoutes(avyForecast):
     """
-    Takes in an avalanche forecaset and returns a list of up to three safe routes to ski for the day
+    Takes in an avalanche forecaset and returns a string of the safe routes to ski,
+    otherwise returns a string saying there are no dafe routes to ski
     """
     #Make the forecast purley numerical for easy analysis
     numericalForecast = makeForecastNumerical(avyForecast)
@@ -95,18 +96,26 @@ def chooseRoutes(avyForecast):
     #If there are no routes remaining, print that there are no safe routes to ski today
     if len(goodRoutes)==0:
         #In the case that there are no safe routes, print that message
-        print("There are no safe routes to ski today:(")
+        return "There are no safe routes to ski today:("
 
     #If there are less than three options, just print the routes that are suitable to ski
     if len(goodRoutes) <= 3:
-        return goodRoutes
+        routeSuggestion = ""
+        for route in goodRoutes:
+            routeSuggestion += str(route) + "\n"
+        #return a string of the suggested routes to ski
+        return routeSuggestion
 
     #otherwise, if there are more than three safe routes to ski, sort them by fun level and reutnr the three most fun options.
     else:
-        print(goodRoutes)
         goodRoutes.sort(key=lambda x: x.get_funOften(), reverse = True)
         #Return a list of the top three most fun routes 
-        return [goodRoutes[0], goodRoutes[1], goodRoutes[2]]
+        top3 = [goodRoutes[0], goodRoutes[1], goodRoutes[2]]
+        routeSuggestion = ""
+        for route in top3:
+            routeSuggestion += str(route) + "\n"
+        #returns a string of the suggested routes to ski
+        return routeSuggestion
 
 
-
+chooseRoutes([' 2 - Moderate ', ' 2 - Moderate ', ' 2 - Moderate '])
