@@ -1,6 +1,6 @@
 """ The web scraper utilizes the BeautifulSoup library to scrape the avalanche forecast
 from the Northwest Avalanche Center website for a given region in the Cascades. 
-The Avalache forecast is made up of three forecasted danger levels: below treeline, near treeline and above treeline.
+The Avalanche forecast is made up of three forecasted danger levels: below treeline, near treeline and above treeline.
 Each danger level ranges from low (1) to extreme (5). The scraper returns a list of three forecasts, one
 for each treeline level for a specified region.
 """
@@ -27,12 +27,12 @@ def scrapeForecast(url):
     url: url string of an NWAC page for a specific region of the cascades to scrape 
 
     Returns:
-    dangersList: a list of the dager levels from the forecasted elevation bands: aboveTreeline, nearTreeline, and belowTreeline
+    dangersList: a list of the danger levels from the forecasted elevation bands: aboveTreeline, nearTreeline, and belowTreeline
     in that order. 
 
     """
     
-    #Load the url, use sleep to ensure that page and scraped contet loads completely
+    #Load the url, use sleep to ensure that page and scraped content loads completely
     #before getting content from the soup.
     r = driver.get(url)
     sleep(1)
@@ -52,39 +52,40 @@ def scrapeForecast(url):
     return dangersList
 
 """
-Each Scraper method returns the avalanche forecast for the region name spedified in the definition.
+Each Scraper method returns the avalanche forecast for the region name specified in the definition as well
+as a link to the NWAC forecast page for the region
 """
 def scrapeOlympics():
     olympics = "https://nwac.us/avalanche-forecast/#/olympics"
-    return scrapeForecast(olympics)
+    return scrapeForecast(olympics), olympics
     
 def scrapeWestSlopesNorth():
     westSlopesNorth = "https://nwac.us/avalanche-forecast/#/west-slopes-north"
-    return scrapeForecast(westSlopesNorth)
+    return scrapeForecast(westSlopesNorth), scrapeWestSlopesNorth
 
 def scrapeWestSlopesCentral():
     westSlopesCentral = "https://nwac.us/avalanche-forecast/#/west-slopes-central"
-    return scrapeForecast(westSlopesCentral)
+    return scrapeForecast(westSlopesCentral), westSlopesCentral
 
 def scrapeWestSlopesSouth():
     westSlopesSouth = "https://nwac.us/avalanche-forecast/#/west-slopes-south"
-    return scrapeForecast(westSlopesSouth)
+    return scrapeForecast(westSlopesSouth), westSlopesSouth
 
 def scrapeStevensPass():
     stevensPass = "https://nwac.us/avalanche-forecast/#/stevens-pass"
-    return scrapeForecast(stevensPass)
+    return scrapeForecast(stevensPass), stevensPass
 
 def scrapeSnoqualmiePass():
     snoqualmiePass = "https://nwac.us/avalanche-forecast/#/snoqualmie-pass"
-    return scrapeForecast(snoqualmiePass)
+    return scrapeForecast(snoqualmiePass), snoqualmiePass
 
 def scrapeEastSlopesCentral():
     eastSlopesCentral = "https://nwac.us/avalanche-forecast/#/east-slopes-central"
-    return scrapeForecast(eastSlopesCentral)
+    return scrapeForecast(eastSlopesCentral), eastSlopesCentral
 
 def scrapeEastSlopesSouth():
     eastSlopesSouth = "https://nwac.us/avalanche-forecast/#/east-slopes-south"
-    return scrapeForecast(eastSlopesSouth)
+    return scrapeForecast(eastSlopesSouth), eastSlopesSouth
 
 def scrapeEastSlopesNorth():
     eastSlopesNorth = "https://nwac.us/avalanche-forecast/#/east-slopes-north"
@@ -92,7 +93,7 @@ def scrapeEastSlopesNorth():
 
 def scrapeMtHood():
     mountHood = "https://nwac.us/avalanche-forecast/#/mt-hood"
-    return scrapeForecast(mountHood)
+    return scrapeForecast(mountHood), mountHood
 
 
 

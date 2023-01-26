@@ -2,9 +2,9 @@
 
 class skiRoute:
     """
-    A class for a ski route. Each ski route passes through different elevation levals and
+    A class for a ski route. Each ski route passes through different elevation levels and
     either does or doesn't enter avalanche terrain. Additionally, some routes can be still be completed with minor
-    changes to avoid avalanche terrein while other must enter avalanche terrain to complete. Routes are also given a fun
+    changes to avoid avalanche terrain while other must enter avalanche terrain to complete. Routes are also given a fun
     rating and a risk rating which captures how exposed and generally risky a route feels while skiing.
     """
 
@@ -56,14 +56,14 @@ class skiRoute:
 
     def get_belowTreeline(self):
         """
-        return T or F is the route crosses enters bwlow treeline elevation
+        return T or F is the route crosses enters below treeline elevation
         """
         #return the boolean of the true false string
         return self._belowTreeline
 
     def get_nearTreeline(self):
         """
-        return T or F if the route croses near treeline elevation
+        return T or F if the route crosses near treeline elevation
         """
         #return the boolean of the true false string
         return self._nearTreeline

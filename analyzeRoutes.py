@@ -12,7 +12,7 @@ from skiRoute import *
 
 def get_regionForecast(regionString):
     """
-    Takes in the string name of a region and reutns the avalanche forecast from the region.
+    Takes in the string name of a region and returns the avalanche forecast from the region.
     """
     if regionString.lower() == "olympics" :
         return scrapeOlympics()
@@ -35,7 +35,7 @@ def get_regionForecast(regionString):
     elif regionString == ("mount hood" or "mt hood" or "mt. hood"):
         return scrapeMtHood()
     else:
-        print("No valid Region Name found") #should this have a quit as well?
+        print("No valid Region Name found") 
     
 def makeForecastNumerical(avyForecast):
     """

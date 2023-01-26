@@ -1,7 +1,7 @@
 # Avy-Savvy-Skiing
 
                                                 - AVY SAVVY SKIING - 
-This program scrapes the avalanche forecast from the Northwest Avalanche Center (NWAC) website and analyzes backcountry ski routes to pick the safest ski route for the day given the avalanche forecast. The program then sends the chosen routes along with the daily avalnche forecast in an automated email to program users. 
+This program scrapes the avalanche forecast from the Northwest Avalanche Center (NWAC) website and analyzes backcountry ski routes to pick the safest ski route for the day given the avalanche forecast. The program then sends the chosen routes along with the daily avalanche forecast in an automated email to program users. 
 
 This program aims to increase safety in the backcoutry by ruling out dangerous routes when conditions are unsafe and automatically suggesting safe alternative routes from a database of routes. 
 
@@ -9,7 +9,7 @@ This program analyzes the most basic element of the avalanche forecast provided 
 
 The avalanche danger scale is: low (1) moderate (2) considerable (3) high (4) extreme (4)
 
-Each treeline level is given a danger forecast for the day which indicates the liklihood of an avalanche occuring in avalanche terrain given the snowpack. So, the decision to ski a route is based upon wether or not the route enters an elevation band with a high danger level, and more importantly wether or not the route enters avalanche terraing (a slope with an angle of 30 degrees or higher). Routes logged by users in a google sheet are used to create skiRoute objects which contain attributes indicating what treeline bands they enter as well as if they enter avalanche terrain. This data is used to choose the safest routes for a given forecast. 
+Each treeline level is given a danger forecast for the day which indicates the likelihood of an avalanche occurring in avalanche terrain given the snowpack. So, the decision to ski a route is based upon wether or not the route enters an elevation band with a high danger level, and more importantly wether or not the route enters avalanche terrain (a slope with an angle of 30 degrees or higher). Routes logged by users in a google sheet are used to create skiRoute objects which contain attributes indicating what treeline bands they enter as well as if they enter avalanche terrain. This data is used to choose the safest routes for a given forecast. 
 
 
 PROJECT DETAILS:
@@ -23,12 +23,12 @@ This project has four main components:
 
 1.) WEBSCRAPING:
 
-scraper.py executes the webscraping and uses selenium chromedriver to open a chrome webpage and scrape the avalanche forecast for a specific region of the north cascades using beautiful soup. Scraper contains one main scraping method which takes a URL to scrape and can be used to to scrape each region's NWAC forecast page when passed the URL. The srcaper searches the soup to locate the forecast for each elevation level, below, near and above, and returns a list of the forecasted danger levels as strings.
+scraper.py executes the webscraping and uses selenium chromedriver to open a chrome webpage and scrape the avalanche forecast for a specific region of the north cascades using beautiful soup. Scraper contains one main scraping method which takes a URL to scrape and can be used to to scrape each region's NWAC forecast page when passed the URL. The scraper searches the soup to locate the forecast for each elevation level, below, near and above, and returns a list of the forecasted danger levels as strings.
 
 2.) DATA MANAGEMENT:
 Data for the program consists of user data and route data, both of which are stored in a public google sheet. Using the unique google sheet ID and URL, the program creates a pandas data frame from the sheet csv which can then be read line by line. Sheets.py has two methods, readInRoutes() and readInUsers(). ReadInRoutes reads in the users google sheet data row by row, creating a user object from each row of data. Each user has a name, associated region they want to ski in, and email address. 
 
-ReadInRoutes() reads from the routes google sheet and creates a skiRoute object from each row of data. Each route has boolean and integer data fields indicating which treeline bands it enters, if it enters avalanche terrain, and integer values for fun and risk. ReadInRoutes() and readInUsers return a list of skiRoute objects, and a list of user objects, respectivley. 
+ReadInRoutes() reads from the routes google sheet and creates a skiRoute object from each row of data. Each route has boolean and integer data fields indicating which treeline bands it enters, if it enters avalanche terrain, and integer values for fun and risk. ReadInRoutes() and readInUsers return a list of skiRoute objects, and a list of user objects, respectively. 
 
 3.) ROUTE ANALYSIS:
 The route analysis component of this program happens in analyzeRoutes.py. To choose routes to ski, first we must get the forecast for a region given the name of a region. This happens in get_regionForecast(). This calls a specific scraper method and returns the forecast. Next, makeForecastNumerical() converts the string forecast into a numerical forecast for easy analysis.
@@ -41,9 +41,9 @@ ChooseRoutes() brings together these helper methods to choose the best ski route
 Choose routes functions by adding all routes in the users region to a list called goodRoutes. If a route is unsafe (eg. meets on of the un skiable criteria above) it is removed from goodRoutes. After removing all of the unsafe routes given the forecast at each treeline band, return the top three most fun of the remaining routes in a list called top3. 
 
 4.) EMAIL AUTOMATION:
-The final component of the this project was setting up an email account and sending automatic emails from the account. Emailer.py uses the SMTP library which provides methods to automatically send emails. Additionally, MIMEText and MIMEMultipart libraries provie methods to populate the receiver and subject lines of an email, as well as to format the body of the email. 
+The final component of the this project was setting up an email account and sending automatic emails from the account. Emailer.py uses the SMTP library which provides methods to automatically send emails. Additionally, MIMEText and MIMEMultipart libraries provide methods to populate the receiver and subject lines of an email, as well as to format the body of the email. 
 
-Google's two factor authentification presented a challange because it prevents outside applications from logging into the gmail account. Instead of a regular password, emailer.py uses an app password to log in to the account and get around two factor authenfication. 
+Google's two factor authentification presented a challenge because it prevents outside applications from logging into the gmail account. Instead of a regular password, emailer.py uses an app password to log in to the account and get around two factor authentification. 
 
 SendEmail() takes in the route suggestion as well as a link to an NWAC region's forecast page. After formatting the body of the email, sendEmail() creates a secure SMTP connection, logs into the AvyScraper@gmail.com account, and send the email with the message. 
 

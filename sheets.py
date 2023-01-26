@@ -29,7 +29,7 @@ def readInRoutes():
     #Initialize a list to store route objects
     myRoutes = []
     
-    #itterate through all rows of the data, creating a skiRoute object from each row of data
+    #iterate through all rows of the data, creating a skiRoute object from each row of data
     for routeName, row in routeDF.iterrows():
         thisRoute = skiRoute(routeName, row["Region"], row["Below Treeline"], row["Near Treeline"], row["Above Treeline"], row["Avalanche Terrain?"], row["Avy terrain avoidable?"], row["Fun out of 10"], row["Risk"])
         #add the route to the list of routes
@@ -38,7 +38,7 @@ def readInRoutes():
 
 def readInUsers():
     """
-    Reads in users from the users googld sheet and creates user objects from each row of the sheet.
+    Reads in users from the users google sheet and creates user objects from each row of the sheet.
     
     Returns:
     myUsers: a list of user objects
@@ -52,7 +52,7 @@ def readInUsers():
     #initialize an empty list to store users
     myUsers = []
     
-    #itterate through all rows of the data, creating a user object from each row of data
+    #iterate through all rows of the data, creating a user object from each row of data
     for userName, row in userDF.iterrows():
         thisUser = user(userName, row["Region to Ski"], row["Email"])
         myUsers.append(thisUser)

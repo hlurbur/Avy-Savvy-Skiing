@@ -20,8 +20,8 @@ def sendEmail(recipient, name, routeSuggestion, forecastLink):
     Sends an email to a user with the suggested routes for them to ski
     
     Args:
-    recipient: the email address of the user that will recieve the email
-    name: the strint name of the user
+    recipient: the email address of the user that will receive the email
+    name: the string name of the user
     routeSuggestion: the string route suggestion for the user to ski
     forecastLink: the link to the forecast of the users preferred region
     
