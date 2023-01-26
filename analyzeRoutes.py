@@ -12,7 +12,8 @@ from skiRoute import *
 
 def get_regionForecast(regionString):
     """
-    Takes in the string name of a region and returns the avalanche forecast from the region.
+    Takes in the string name of a region and returns the avalanche forecast from the region as well as a link to
+    that regions forecast.
     """
     if regionString.lower() == "olympics" :
         return scrapeOlympics()
@@ -76,7 +77,7 @@ def getRegionRoutes(region):
 
 def chooseRoutes(avyForecast, region):
     """
-    Takes in an avalanche forecaset and returns a string of the safe routes to ski,
+    Takes in an avalanche forecast and returns a string of the safe routes to ski,
     otherwise returns a string saying there are no safe routes to ski
 
     Args:
@@ -87,7 +88,7 @@ def chooseRoutes(avyForecast, region):
     routeSuggestion: a string of suggested routes to ski or a string saying there are no
     safe routes to ski.
     """
-    #Make the forecast purley numerical for easy analysis
+    #Make the forecast purely numerical for easy analysis
     numericalForecast = makeForecastNumerical(avyForecast)
     
     #get the danger number for each treeline level

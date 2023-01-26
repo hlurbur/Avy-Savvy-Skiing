@@ -61,7 +61,7 @@ def scrapeOlympics():
     
 def scrapeWestSlopesNorth():
     westSlopesNorth = "https://nwac.us/avalanche-forecast/#/west-slopes-north"
-    return scrapeForecast(westSlopesNorth), scrapeWestSlopesNorth
+    return scrapeForecast(westSlopesNorth), westSlopesNorth
 
 def scrapeWestSlopesCentral():
     westSlopesCentral = "https://nwac.us/avalanche-forecast/#/west-slopes-central"
