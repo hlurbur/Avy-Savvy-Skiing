@@ -12,7 +12,7 @@ from analyzeRoutes import *
 #email the messages are sent from and app password. Used to get around two-step
 #verification when the program logs into the account.
 sender_email = "AvyScraper@gmail.com"
-gmail_password = "vusezjvbwbnkpold"
+app_password = "vusezjvbwbnkpold"
 
 
 def sendEmail(recipient, name, routeSuggestion, forecastLink):
@@ -56,7 +56,7 @@ def sendEmail(recipient, name, routeSuggestion, forecastLink):
     
     #create a secure SSL connection
     s = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    s.login(sender_email, gmail_password)
+    s.login(sender_email, app_password)
     s.sendmail(sender_email, recipient, text)
     s.quit()
 
