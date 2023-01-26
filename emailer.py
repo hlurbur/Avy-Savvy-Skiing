@@ -12,7 +12,7 @@ from analyzeRoutes import *
 #email the messages are sent from and app password. Used to get around two-step
 #verification when the program logs into the account.
 sender_email = "AvyScraper@gmail.com"
-app_password = "vusezjvbwbnkpold"
+app_password = "" #enter password here 
 
 
 def sendEmail(recipient, name, routeSuggestion, forecastLink):

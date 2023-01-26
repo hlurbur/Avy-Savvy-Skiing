@@ -60,8 +60,8 @@ HOW TO RUN THE PROGRAM:
     * email.mime.text
     * email.mime.multipart
     * smtplib
-2.) Download a chrome driver and customize the pathname in scraper.py to your chromedriver path (line 15)
-3.) Add yourself as a user in the google sheet and add your ski routes to the routes sheet!
+3.) Download a chrome driver and customize the pathname in scraper.py to your chromedriver path (line 15)
+4.) Add yourself as a user in the google sheet and add your ski routes to the routes sheet!
     
     google sheet link: https://docs.google.com/spreadsheets/d/1M4zSa9Osun8BaQos3dhi97FRa74uo5EJjaIh3NV7-3U/edit#gid=744851719
 
@@ -70,3 +70,4 @@ HOW TO RUN THE PROGRAM:
 IMPORTANT NOTES
 1.) When entering data in the google sheet, each route and user row must be complete (every cell is filled with the correct data type)
 2.) Region names are not caps sensitive but MUST be spelled correctly
+3.) The emailing part of the program currently runs with AvyScraper@gmail.com account whose password is not publicly published in the code. To run the program, you need to create you own google account to send emails from and replace the password and email code with the details from you account. 
