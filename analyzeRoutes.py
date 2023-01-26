@@ -31,8 +31,7 @@ def get_regionForecast(regionString):
     elif regionString.lower() == "east slopes south":
         return scrapeEastSlopesSouth()
     elif regionString.lower() == "east slopes north":
-        forecastList =  scrapeEastSlopesNorth()
-        return forecastList
+        return scrapeEastSlopesNorth()
     elif regionString == ("mount hood" or "mt hood" or "mt. hood"):
         return scrapeMtHood()
     else:
@@ -139,22 +138,15 @@ def chooseRoutes(avyForecast, region):
 
     #If there are less than three options, just print the routes that are suitable to ski
     if len(goodRoutes) <= 3:
-        routeSuggestion = ""
-        for route in goodRoutes:
-            routeSuggestion += str(route) + "\n"
-        #return a string of the suggested routes to ski
-        return routeSuggestion
+        return goodRoutes
 
-    #otherwise, if there are more than three safe routes to ski, sort them by fun level and reutnr the three most fun options.
+    #otherwise, if there are more than three safe routes to ski, sort them by fun level and reutrn the three most fun options.
     else:
         goodRoutes.sort(key=lambda x: x.get_funOften(), reverse = True)
         #Return a list of the top three most fun routes 
         top3 = [goodRoutes[0], goodRoutes[1], goodRoutes[2]]
-        routeSuggestion = ""
-        for route in top3:
-            routeSuggestion += str(route) + "\n"
-        #returns a string of the suggested routes to ski
-        return routeSuggestion
+        #return the top three routes 
+        return top3
 
 
 

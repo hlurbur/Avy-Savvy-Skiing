@@ -88,7 +88,7 @@ def scrapeEastSlopesSouth():
 
 def scrapeEastSlopesNorth():
     eastSlopesNorth = "https://nwac.us/avalanche-forecast/#/east-slopes-north"
-    return scrapeForecast(eastSlopesNorth)
+    return scrapeForecast(eastSlopesNorth), eastSlopesNorth
 
 def scrapeMtHood():
     mountHood = "https://nwac.us/avalanche-forecast/#/mt-hood"

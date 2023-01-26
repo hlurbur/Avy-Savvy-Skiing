@@ -22,7 +22,7 @@ class skiRoute:
         """
         return the string representation of a Ski Route
         """
-        routeStr = "Name:" + self._name + ", Region:" + self._region + ", BelowTL:" + str(self._belowTreeline) + ", Near TL:" + str(self._nearTreeline) + ", AboveTL:" + str(self._aboveTreeline) + ", AvyTrr:" + str(self._avyTerrain) + ", Avoidable:" +  str(self._avyAvoidable) + ", Fun/10:" + str(self._funOften) + ", Risk/10:" + str(self._riskOften)
+        routeStr =  self._name.upper() + " Region: " + self._region + ", BelowTL: " + str(self._belowTreeline) + ", Near TL: " + str(self._nearTreeline) + ", AboveTL: " + str(self._aboveTreeline) + ", AvyTrr: " + str(self._avyTerrain) + ", Avoidable: " +  str(self._avyAvoidable) + ", Fun/10: " + str(self._funOften) + ", Risk/10: " + str(self._riskOften)
         return routeStr
 
     def get_name(self):
